@@ -1,8 +1,13 @@
 package numerosprimos;
 import java.lang.Math.*;
-
-public class NumerosPrimos {
-	
+//commited, if a particular version of a file is in the git directory, staged modified and added to the staging area, modified change since it wa checked out but has not been staged
+//git clone 'SSH URL'
+//git remote -v 
+//git add 'filename', staging area
+//git commit -m "add filename"
+//git log
+//git push, update
+public class NumerosPrimos {	
 	public static void main(String[] args) {
 		int contador = 0;
 		double residuo = 1;
