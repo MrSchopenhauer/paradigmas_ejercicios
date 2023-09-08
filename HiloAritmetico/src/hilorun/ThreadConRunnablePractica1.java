@@ -11,24 +11,24 @@ import java.util.Scanner;
  */
 
 class ThreadConRunnablePractica1 implements Runnable{
-    int numero;
+    long numero;
     boolean whoIsWho;
     
-    public ThreadConRunnablePractica1 (int _numero, boolean _whoIsWho){
+    public ThreadConRunnablePractica1 (long _numero, boolean _whoIsWho){
         numero = _numero;
         whoIsWho = _whoIsWho;
     }
     
     @Override
     public void run(){
-    	int resultadoSuma=numero;
-    	int resultadoFactorial=numero;
+    	long resultadoSuma=numero;
+    	long resultadoFactorial=numero;
     	
     	// Se designa la accion que hara cada hilo a traves de operador booleano
     	if (whoIsWho) {
     		
     		//se define la operacion de suma si el hilo es verdadero
-    		for(int i= numero; i > 0;i = i-1) {
+    		for(long i= numero; i > 0;i = i-1) {
     			resultadoSuma = resultadoSuma + i-1;
     		}
     		
@@ -37,7 +37,7 @@ class ThreadConRunnablePractica1 implements Runnable{
     	}else{
     		
     		//se define la operacion de factorial si el hilo es falso
-    		for(int i= numero; i > 1 ;i--) {
+    		for(long i= numero; i > 1 ;i--) {
     			resultadoFactorial = resultadoFactorial*(i-1);
     		}
     		
@@ -49,7 +49,7 @@ class ThreadConRunnablePractica1 implements Runnable{
     public static void main(String args[]){
     	System.out.println("Cual numero quieres procesar? >>");
     	Scanner enteroScanner = new Scanner(System.in);
-    	int respuesta = enteroScanner.nextInt();
+    	long respuesta = enteroScanner.nextInt();
     	
         ThreadConRunnablePractica1 a = new ThreadConRunnablePractica1(respuesta,false);
         ThreadConRunnablePractica1 b = new ThreadConRunnablePractica1(respuesta,true);
