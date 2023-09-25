@@ -9,7 +9,7 @@ public class ConnectionTest {
    public static void main(String[] args) throws Exception {
 
       // variables
-      final String url = "jdbc:mysql://localhost:3306/test";
+      final String url = "jdbc:mysql://localhost:3306/test2";
       final String user = "root";
       final String password = "";
 
@@ -23,14 +23,6 @@ public class ConnectionTest {
           if (conexion != null) {
               System.out.println("Conexión exitosa a la base de datos MySQL");
 
-              Statement statement = conexion.createStatement();
-              String createTableSQL = "CREATE TABLE IF NOT EXISTS ejemplo (" +
-                      "id INT AUTO_INCREMENT PRIMARY KEY," +
-                      "nombre VARCHAR(255)," +
-                      "edad INT)";
-              statement.executeUpdate(createTableSQL);
-              System.out.println("Tabla creada exitosamente");
-
               conexion.close();
           }
       } catch (ClassNotFoundException e) {
@@ -42,4 +34,15 @@ public class ConnectionTest {
       }
   }
 }
+
+
+
+
+/*Statement statement = conexion.createStatement();
+String createTableSQL = "CREATE TABLE IF NOT EXISTS ejemplo (" +
+"id INT AUTO_INCREMENT PRIMARY KEY," +
+"nombre VARCHAR(255)," +
+"edad INT)";
+statement.executeUpdate(createTableSQL);
+System.out.println("Tabla creada exitosamente");/*/
   

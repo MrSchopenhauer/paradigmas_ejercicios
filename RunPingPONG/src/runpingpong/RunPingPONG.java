@@ -40,14 +40,22 @@ class RunPingPONG implements Runnable {
   }
 
   public static void main(String[] args) {
-	  // Los dos hilos van a entrar al mismo tiempo, pasan los 150 o 100 milisegundos y se va a mostrar la palabra
-    Runnable ping = new RunPingPONG("ping", 300);
-    Runnable PONG = new RunPingPONG("PONG", 300);
-    Runnable crack = new RunPingPONG("crack", 300);
-    new Thread(ping).start();
-    new Thread(PONG).start();
-    new Thread(crack).start();
-    // Aqui se juntan 
+	  System.out.println(15/4-1/4);
+	  System.out.println( 15%4-1%4);
+	  
+	  //En este caoso el control de ruta se escribe como un dominio 
+	  //Se indican como una direccion los controles de ruta
+	  //Al ser computo paralelo se hacen distitnots proceso en una misma computadora, se especifica para poder enviar el menssaje 
+	  //cuando en un mismo tiempo hay distintos mensajes que se envian entre distintos procesos
+	  //si llega a coincidir en una misma arista de la red o conexion, se van a atorar los nodos y el problema de
+	  //cuello de botella, no pueden entrar ni salir 
+	  //los mensajes tienen que enviarse, como se resuelve 
+	  //latencia, productor consumidor sirve para resolver mensajes o datos que coinciden en un mismo nodo
+	  //8 conexo 16 nodos con adyacencia que consideran los ocho vecinos que tengan nodo, no solo los 4 conexo
+	  // 4 conexo o conecta cuatro 
+	  //tambien se recorren columnas y renglones y se va a tomar el renglon o la comlumna mas proxima o rpaida 
+	  //el 8 conexo permite m[as rapido el envio de mensaje REFERENCIAR AL DIBUJO DE RED Y AGREGARLE LAS REDES DIAGONALES 
+	  // 
   }
   // Se eliminan los hilos y se liberan los recursos utilizados 
 }

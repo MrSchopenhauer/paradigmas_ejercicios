@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Corredor {
 	//Variables
-		//Base animacion
+	 	//Base animacion
     private BufferedImage[] sprites;
     private int currentSpriteIndex; 
     	//Coordenadas y movimiento
@@ -22,7 +22,8 @@ public class Corredor {
     private int previousY; 
     	//Estela que deja mientras avanza
     private List<JLabel> asteriscos = new ArrayList<>();
-    	//Para identificar al ganador y fin del ciclo
+
+	//Para identificar al ganador y fin del ciclo
     private int id;
     private boolean bandera=true;
 
@@ -46,7 +47,11 @@ public class Corredor {
 	public int getX() {
 		return x;
 	}
-
+	
+	public void setX(int x) {
+	this.x = x;
+}
+	
 	//Constructor 
 	public Corredor(int x, int y, int id) {
 		//Variables de posicion

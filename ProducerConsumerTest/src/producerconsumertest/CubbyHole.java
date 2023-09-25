@@ -30,7 +30,9 @@ class CubbyHole {
         notify();
         return contents;
     }
-
+    
+    // LOS METODOS SON PUBLICOS, SINCRONIZADOS Y CONTENER UNA BANDERA, PARA PRODUCTOR EN TRUE Y PARA EL OTRO FALSE 
+    // PARA LOS DOS HILOS LOS VALORES DEBEN DE SER CONTRARIOS Y DEBEN TENER UNA VARIABLE COMPARTIDA
     public synchronized void put(int value) {    //PRODUCTOR
         while (available == true) {
             try {
@@ -41,6 +43,9 @@ class CubbyHole {
         }
         contents = value;
         available = true;
-        notify();
+        notify(); // PASO DE MENSAJES EN PRODUCTOR Y CONSUMIDOR, EL PRODUCTOR NOTIFICA AL CONSUMIDOR QUE LA BANDERA HA SIDO MODIFICADA Y 
+        		// QUE YA PRODUJO, CUANDO TENEMOS MAS PRODUCTORES ES NOTIFYALL, AUNQUE EN ESTA PRACTICA FUE SUFICIENTE CON EL NOTIFY
+        		//AGREGAR UN THREAD SLEEP, DAR TIEMPO AL CONSUMIDOR DE QUE CONSUMA 
+        		//Latencia fija, no aleatoria 
     }
 }
