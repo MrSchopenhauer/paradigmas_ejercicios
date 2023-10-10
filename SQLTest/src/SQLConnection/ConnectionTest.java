@@ -9,7 +9,7 @@ public class ConnectionTest {
    public static void main(String[] args) throws Exception {
 
       // variables
-      final String url = "jdbc:mysql://localhost:3306/test2";
+      final String url = "jdbc:mysql://localhost:3306/zoo";
       final String user = "root";
       final String password = "";
 
@@ -18,7 +18,30 @@ public class ConnectionTest {
 
           // Establece la conexión
           Connection conexion = DriverManager.getConnection(url, user, password);
+          Statement statement = conexion.createStatement();
 
+          String createTableSQL = "CREATE TABLE IF NOT EXISTS Zoo(" +
+          "Num_zoo INT PRIMARY KEY AUTOINCREMENT NOT NULL," +
+          "Ciudad VARCHAR(30)," + "Nombre VARCHAR(30),"+"Tamanio FLOAT,"+
+          "Presupuesto float,"+ "Pais VARCHAR(30))";
+          System.out.println("Tabla ZOO creada exitosamente");
+
+          String createTableAnimal = "CREATE TABLE IF NOT EXISTS Animal("
+          +"Num_animal INT PRIMARY KEY,"
+          +"Sexo VARCHAR(10),"
+          + "Nacimiento INT,"
+          + "Num_zoo INT" 
+          + "FOREIGN KEY (Num_zoo) REFERENCES Zoo(Num_zoo),"
+          + "Num especie INT,"
+          + "PaisOrigen VARCHAR(15))";
+          
+          String createTableEspecie = "CREATE TABLE IF NOT EXISTS Especie(" +
+          "Num_especie INT PRIMARY KEY," +
+          "NomVulgar VARCHAR(30)," + "NomCient VARCHAR(30),"+"Familia VARCHAR(30),"+"PeligroExtincion BOOLEAN)";
+          statement.executeUpdate(createTableSQL);
+          statement.executeUpdate(createTableEspecie);
+          statement.executeUpdate(createTableAnimal);
+          
           // Comprueba si la conexión es correcta y crea tabla
           if (conexion != null) {
               System.out.println("Conexión exitosa a la base de datos MySQL");
@@ -38,11 +61,5 @@ public class ConnectionTest {
 
 
 
-/*Statement statement = conexion.createStatement();
-String createTableSQL = "CREATE TABLE IF NOT EXISTS ejemplo (" +
-"id INT AUTO_INCREMENT PRIMARY KEY," +
-"nombre VARCHAR(255)," +
-"edad INT)";
-statement.executeUpdate(createTableSQL);
-System.out.println("Tabla creada exitosamente");/*/
+/*;/*/
   
