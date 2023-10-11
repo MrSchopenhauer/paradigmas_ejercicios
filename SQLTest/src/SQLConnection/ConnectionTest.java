@@ -21,27 +21,34 @@ public class ConnectionTest {
           Statement statement = conexion.createStatement();
 
           String createTableSQL = "CREATE TABLE IF NOT EXISTS Zoo(" +
-          "Num_zoo INT PRIMARY KEY AUTOINCREMENT NOT NULL," +
+          "Num_zoo INT PRIMARY KEY," +
           "Ciudad VARCHAR(30)," + "Nombre VARCHAR(30),"+"Tamanio FLOAT,"+
           "Presupuesto float,"+ "Pais VARCHAR(30))";
-          System.out.println("Tabla ZOO creada exitosamente");
+          statement.executeUpdate(createTableSQL);
+          
+          String createTableEspecie = "CREATE TABLE IF NOT EXISTS Especie(" +
+          "Num_especie INT PRIMARY KEY," +
+          "NomVulgar VARCHAR(30)," + "NomCient VARCHAR(30),"+"Familia VARCHAR(30),"+"PeligroExtincion BOOLEAN)";
+          statement.executeUpdate(createTableEspecie);
 
           String createTableAnimal = "CREATE TABLE IF NOT EXISTS Animal("
           +"Num_animal INT PRIMARY KEY,"
           +"Sexo VARCHAR(10),"
           + "Nacimiento INT,"
-          + "Num_zoo INT" 
+          + "Num_zoo INT," 
           + "FOREIGN KEY (Num_zoo) REFERENCES Zoo(Num_zoo),"
-          + "Num especie INT,"
+          + "Num_especie INT,"
           + "PaisOrigen VARCHAR(15))";
-          
-          String createTableEspecie = "CREATE TABLE IF NOT EXISTS Especie(" +
-          "Num_especie INT PRIMARY KEY," +
-          "NomVulgar VARCHAR(30)," + "NomCient VARCHAR(30),"+"Familia VARCHAR(30),"+"PeligroExtincion BOOLEAN)";
-          statement.executeUpdate(createTableSQL);
-          statement.executeUpdate(createTableEspecie);
           statement.executeUpdate(createTableAnimal);
           
+          System.out.println("Tablas creadas exitosamente");
+          
+          String insertZoo = "INSERT IGNORE INTO Zoo (Num_zoo, Ciudad, Nombre, Tamanio, Presupuesto, Pais) " +
+                  "VALUES (1, 'Toluca', 'Zacango', 1.0, 1.0, 'Mexico')";
+          statement.executeUpdate(insertZoo);
+          
+          String insertZoo2 = "INSERT IGNORE INTO Zoo VALUES (2, 'Pachuca', 'Pachango', 1.0, 1.0, 'Mexico')";
+          statement.executeUpdate(insertZoo2);
           // Comprueba si la conexión es correcta y crea tabla
           if (conexion != null) {
               System.out.println("Conexión exitosa a la base de datos MySQL");
