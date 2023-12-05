@@ -23,7 +23,7 @@ public class HiloCorredor extends JFrame implements Runnable {
         timer = new Timer(100, e -> {
             if (!carreraTerminada && corredor.getX() < 720) {
                 // Mueve a los corredores y pasa el objeto Graphics del panel para dibujar asteriscos
-                /*corredor.move(numeroAleatorio, 0, panel.getGraphics(), panel); */
+                corredor.move(numeroAleatorio, 0, panel.getGraphics(), panel); 
  // Mueve al adversario
                 // Redibuja el panel
                 panel.repaint();

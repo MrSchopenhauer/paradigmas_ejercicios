@@ -8,10 +8,12 @@ import java.util.concurrent.Semaphore;
 
 public class HiloCorredorP2 extends HiloCorredor {
     protected Semaphore finP1;
+
     
 	public HiloCorredorP2(Corredor corredor, JPanel panel, Corredor adversario, Semaphore finP1) {
 		super(corredor, panel, adversario);
 		this.finP1 = finP1;
+		
 		timer = new Timer(100, e -> {
             //if (!carreraTerminada && corredor.getX() < 720) {
         	if (corredor.getX() < 720) {

@@ -9,7 +9,8 @@ import java.util.concurrent.Semaphore;
 public class CarreraInicio {
 	//Semaforos 
     protected static Semaphore finP1;
-    protected static Semaphore finP2;
+    //Para otro corredor paralelo
+    protected static Semaphore finP4;
     
     public static void main(String[] args) {
     	//Set del frame
@@ -25,9 +26,15 @@ public class CarreraInicio {
         Corredor corredor2 = new Corredor(0, 150, 2); 
         //TERCERO EN DISCORDIA 
         Corredor corredor3 = new Corredor(0, 250, 3);
+        
+        // CUARTO POR SI ACASO
+        //Corredor corredor4 = new Corredor(0,300,4);
+        
         corredores.add(corredor1);
         corredores.add(corredor2);
         corredores.add(corredor3);
+        //Cuarto por si acaso 
+        //corredores.add(corredor4);
 
         // Instancia de panel, indicacion de color
         JPanel panel = new JPanel() {
@@ -47,7 +54,8 @@ public class CarreraInicio {
         // Instancia de hilos
         	//Semaforos
         finP1 = new Semaphore(0,true);
-        finP2 = new Semaphore(0,true);
+        //por si acaso
+        finP4 = new Semaphore(0,true);
         	//Usuarios/corredores
         Thread hiloCorredor1 = new Thread(new HiloCorredorP1(corredor1, panel, corredor2,finP1));
         Thread hiloCorredor2 = new Thread(new HiloCorredorP2(corredor2, panel, corredor1,finP1));
